@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+
+    <!-- Books property based dependency injection -->
+    <bean id="book1" class="com.jatin.book_project.model.Book">
+        <property name="bookId" value="101"></property>
+        <property name="title" value="The lesser key of solomon"></property>
+        <property name="genre" value="Magic"></property>
+        <property name="language" value="Latin"></property>
+        <property name="authors">
+            <list>
+                <ref bean="author1"/> 
+                <ref bean="author2"/> 
+            </list>
+        </property>
+    </bean>
+    <bean id="book2" class="com.jatin.book_project.model.Book">
+        <property name="bookId" value="102"></property>
+        <property name="title" value="Dune"></property>
+        <property name="genre" value="Sci-Fi"></property>
+        <property name="language" value="English"></property>
+        <property name="authors">
+            <list>
+                <ref bean="author3"/> 
+                <ref bean="author1"/> 
+            </list>
+        </property>
+    </bean>
+    <bean id="book3" class="com.jatin.book_project.model.Book">
+        <property name="bookId" value="101"></property>
+        <property name="title" value="The book of magic"></property>
+        <property name="genre" value="Magic"></property>
+        <property name="language" value="English"></property>
+        <property name="authors">
+            <list>
+                <ref bean="author2"/> 
+                <ref bean="author3"/> 
+            </list>
+        </property>
+    </bean>
+
+    <!-- Constructor based dependency injection -->
+    <bean id="address1" class="com.jatin.book_project.model.Address">
+        <constructor-arg value="Electronic City" />
+        <constructor-arg value="Bengaluru" />
+        <constructor-arg value="India" />
+    </bean>
+    <bean id="address2" class="com.jatin.book_project.model.Address">
+        <constructor-arg value="Time Square" />
+        <constructor-arg value="NYC" />
+        <constructor-arg value="USA" />
+    </bean>
+
+    <!-- Authors -->
+    <bean id="author1" class="com.jatin.book_project.model.Author">
+        <constructor-arg>
+            <ref bean="address1" />
+        </constructor-arg>
+        <constructor-arg value="King Solomon" />
+        <constructor-arg value="1" type="int" />
+    </bean>
+    <bean id="author2" class="com.jatin.book_project.model.Author">
+        <constructor-arg>
+            <ref bean="address2" />
+        </constructor-arg>
+        <constructor-arg value="Jatin Kumar" />
+        <constructor-arg value="2" type="int" />
+    </bean>
+    <bean id="author3" class="com.jatin.book_project.model.Author">
+        <constructor-arg>
+            <ref bean="address1" />
+        </constructor-arg>
+        <constructor-arg value="Frank Herbert" />
+        <constructor-arg value="3" type="int" />
+    </bean>
+    <bean id="author4" class="com.jatin.book_project.model.Author">
+        <constructor-arg>
+            <ref bean="address1" />
+        </constructor-arg>
+        <constructor-arg value="Douglas Crockford" />
+        <constructor-arg value="3" type="int" />
+    </bean>
+
+    <!-- Book constructur based DI -->
+    <bean id="book4" class="com.jatin.book_project.model.Book">
+        <property name="bookId" value="11"></property>
+        <property name="title" value="The Unabomber Manifesto"></property>
+        <property name="genre" value="Magic"></property>
+        <property name="language" value="English"></property>
+        <property name="authors">
+            <list>
+                <ref bean="author2"/> 
+            </list>
+        </property>
+    </bean>
+    <bean id="book5" class="com.jatin.book_project.model.Book">
+        <property name="bookId" value="12"></property>
+        <property name="title" value="Everything I want to do is illegal"></property>
+        <property name="genre" value="Magic"></property>
+        <property name="language" value="English"></property>
+        <property name="authors">
+            <list>
+                <ref bean="author2"/> 
+                <ref bean="author3"/> 
+            </list>
+        </property>
+    </bean>
+    <bean id="book6" class="com.jatin.book_project.model.Book">
+        <property name="bookId" value="13"></property>
+        <property name="title" value="JavaScript: The good parts"></property>
+        <property name="genre" value="Programming"></property>
+        <property name="language" value="English"></property>
+        <property name="authors">
+            <list>
+                <ref bean="author4"/> 
+            </list>
+        </property>
+    </bean>
+
+</beans>
