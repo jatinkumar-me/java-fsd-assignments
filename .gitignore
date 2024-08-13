@@ -64,3 +64,5 @@ nblibraries.properties
 
 # Windows
 Thumbs.db
+
+*.tar.gz
