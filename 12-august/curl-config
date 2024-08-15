@@ -1,0 +1,4 @@
+variable baseUrl=http://localhost:8080
+header="Content-Type: application/json"
+max-time=30
+silent
