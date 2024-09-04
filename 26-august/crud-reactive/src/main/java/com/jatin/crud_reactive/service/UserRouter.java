@@ -6,6 +6,7 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 import static org.springframework.web.reactive.function.server.RequestPredicates.PUT;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
@@ -16,6 +17,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 @Configuration
 public class UserRouter {
 
+	@Bean
 	public RouterFunction<ServerResponse> userRoutes(UserHandler userHandler) {
 		return route(GET("/users"), userHandler::getAllUsers)
 				.andRoute(GET("/users/{id}"), userHandler::getUserById)
