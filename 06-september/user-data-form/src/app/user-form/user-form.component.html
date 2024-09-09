@@ -1,0 +1,24 @@
+<form #userForm="ngForm" (ngSubmit)="addUser(userForm)" class="user-form">
+  <!-- Name Field -->
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" id="name" [(ngModel)]="user.name" name="name" required minlength="3" class="form-control">
+    <div *ngIf="userForm.submitted && !userForm.controls['name']?.valid" class="error">
+      <div *ngIf="userForm.controls['name']?.errors?.['required']">Name is required.</div>
+      <div *ngIf="userForm.controls['name']?.errors?.['minlength']">Name must be at least 3 characters long.</div>
+    </div>
+  </div>
+
+  <!-- Email Field -->
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" id="email" [(ngModel)]="user.email" name="email" required email class="form-control">
+    <div *ngIf="userForm.submitted && !userForm.controls['email']?.valid" class="error">
+      <div *ngIf="userForm.controls['email']?.errors?.['required']">Email is required.</div>
+      <div *ngIf="userForm.controls['email']?.errors?.['email']">Invalid email format.</div>
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit" class="btn-submit">Add User</button>
+</form>
